@@ -1,21 +1,26 @@
 <main>
 
-  <?php for ($trial = 0; $trial < 6; $trial++) { ?>
-  <p>
-    <?php
+  <?php
+  for ($trial = 0; $trial < 6; $trial++) {
     if (isset($data->game->trials[$trial])):
-      foreach ($data->game->trials[$trial] as $letter):
-    ?>
-    <span class="<?= $letter->color ?>"><?= $letter->value ?></span>
-    <?php
-      endforeach;
-    else:
-    ?>
+  ?>
+
+    <p>
+      <?php
+        foreach ($data->game->trials[$trial] as $letter):
+      ?>
+      <span class="<?= $letter->color ?>"><?= $letter->value ?></span>
+      <?php endforeach; ?>
+    </p>
+
+    <?php else: ?>
+      
     <div class="try" style="width: calc(<?= strlen($data->game->word) * 48 ?>px + <?= (strlen($data->game->word) - 1) * 12 ?>px)"></div>
-    <?php endif; ?>
-  
-  </p>
-  <?php } ?>
+
+  <?php
+    endif;
+  }
+  ?>
 
   <?php if ($data->game->state === 'progress'): ?>
   <form class="game" method="post">
