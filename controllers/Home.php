@@ -1,26 +1,30 @@
 <?php
 
-class Home extends Controller {
+declare(strict_types=1);
 
-  public function lobby(): void {
-    $player = new Player();
-    $memory = new Memory();
-    
-    $playersStandings = $memory->getPlayersStandings();
+class Home extends Controller
+{
+    public function lobby(): void
+    {
+        $player = new Player();
+        $memory = new Memory();
 
-    $this->render('home', [
-      'player' => $player,
-      'playersStandings' => $playersStandings
-    ]);
-  }
+        $playersStandings = $memory->getPlayersStandings();
 
-  public function createGame(): void {
-    $game = new Game();
-    $game->init();
-    $game->save();
+        $this->render('home', [
+            'player' => $player,
+            'playersStandings' => $playersStandings,
+        ]);
+    }
 
-    new Player($this->clean($_POST['name']));
+    public function createGame(): void
+    {
+        $game = new Game();
+        $game->init();
+        $game->save();
 
-    header('location: /play');
-  }
+        new Player($this->clean($_POST['name']));
+
+        header('location: /play');
+    }
 }

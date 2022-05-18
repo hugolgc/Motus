@@ -8,11 +8,11 @@
       placeholder="Pseudo"
       maxlength="20"
       required
-      
-      <?php if ($data->player->name): ?>
-      value="<?= $data->player->name ?>"
+
+      <?php if ($data->player->name) { ?>
+      value="<?php echo $data->player->name; ?>"
       readonly
-      <?php endif; ?>
+      <?php } ?>
 
     />
     <button class="play" type="submit">Jouer</button>
@@ -29,14 +29,14 @@
     </thead>
     <tbody>
 
-      <?php foreach ($data->playersStandings as $key => $player): ?>
+      <?php foreach ($data->playersStandings as $key => $player) { ?>
       <tr>
-        <td class="right position"><?= $key + 1 ?></td>
-        <td class="player"><?= $player->name ?></td>
-        <td class="right"><?= $player->score ?></td>
+        <td class="right position"><?php echo $key + 1; ?></td>
+        <td class="player"><?php echo $player->name; ?></td>
+        <td class="right"><?php echo $player->score; ?></td>
       </tr>
-      <?php endforeach; ?>
-      
+      <?php } ?>
+
     </tbody>
   </table>
 </main>
