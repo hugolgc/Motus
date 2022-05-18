@@ -1,12 +1,16 @@
 <?php
 
-class Game {
+declare(strict_types=1);
 
-   public function save(string $name, Game $value): void {
-      setcookie($name, serialize($value));
-   }
+class cleanCode
+{
+    public function save(string $name, self $value): void
+    {
+        setcookie($name, serialize($value));
+    }
 
-   public function load(string $name): mixed {
-      return unserialize($_COOKIE[$name]);
-   }
+    public function load(string $name): mixed
+    {
+        return unserialize($_COOKIE[$name]);
+    }
 }

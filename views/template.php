@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
-  
-  <?= $body ?>
+
+  <?php echo $body; ?>
 
   <script src="/assets/script.js"></script>
 </body>
